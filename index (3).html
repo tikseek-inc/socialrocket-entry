@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialRocket | クリエイターエントリーフォーム</title>
+<meta name="description" content="SocialRocket MCNへのクリエイターエントリーフォーム。TikTok Shopクリエイターとして活動したい方はこちらから。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand-purple: #5B3FF5;
+    --brand-purple-dark: #3E24D4;
+    --brand-purple-light: #8A74FF;
+    --brand-mint: #A8E6CF;
+    --brand-yellow: #FFD93D;
+    --brand-pink: #FF6B9D;
+    --bg-cream: #FFF8F0;
+    --bg-lavender: #F0ECFF;
+    --text-dark: #2B1B5C;
+    --text-medium: #5B4B8A;
+    --white: #FFFFFF;
+    --error: #E24B4A;
+    --success: #1D9E75;
+    --shadow-brand: 6px 6px 0px #2B1B5C;
+    --shadow-brand-sm: 4px 4px 0px #2B1B5C;
+    --border-dark: 3px solid #2B1B5C;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    background: var(--bg-cream);
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(91, 63, 245, 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(255, 107, 157, 0.06) 0%, transparent 40%);
+    color: var(--text-dark);
+    line-height: 1.7;
+    padding: 24px 16px 80px;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    text-align: center;
+    padding: 70px 20px 32px;
+    position: relative;
+  }
+
+  .home-back {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    border: 2.5px solid var(--text-dark);
+    color: var(--text-dark);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 3px 3px 0px var(--text-dark);
+    transition: all 0.15s;
+    z-index: 10;
+  }
+
+  .home-back:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--text-dark);
+    background: var(--bg-lavender);
+  }
+
+  @media (max-width: 460px) {
+    .home-back {
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      font-size: 0.75rem;
+    }
+  }
+
+  .hero-mascot {
+    width: 100px;
+    height: 100px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--brand-purple);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 900;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    color: var(--text-medium);
+    font-size: 1rem;
+    margin-bottom: 24px;
+    line-height: 1.9;
+  }
+
+  .step-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--white);
+    border: 2.5px solid var(--text-dark);
+    color: var(--text-dark);
+    padding: 6px 12px 6px 6px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    box-shadow: 3px 3px 0px var(--text-dark);
+    white-space: nowrap;
+  }
+
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--brand-purple);
+    color: var(--white);
+    border-radius: 50%;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+  }
+
+  .step-badge:nth-of-type(1) .step-num { background: var(--brand-pink); }
+
+  .step-arrow { color: var(--brand-purple); font-weight: 900; font-size: 1rem; }
+
+  /* ===== FORM CARD ===== */
+  .form-card {
+    background: var(--white);
+    border: var(--border-dark);
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow-brand);
+    margin-top: 24px;
+  }
+
+  @media (max-width: 560px) {
+    .form-card { padding: 24px 18px; border-radius: 18px; }
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px dashed var(--bg-lavender);
+  }
+
+  .section:last-of-type { border-bottom: none; margin-bottom: 0; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--brand-pink);
+    color: var(--white);
+    border: 2.5px solid var(--text-dark);
+    border-radius: 50%;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .section:nth-of-type(2) .section-num { background: var(--brand-yellow); color: var(--text-dark); }
+  .section:nth-of-type(3) .section-num { background: #4CAF8E; color: var(--white); }
+  .section:nth-of-type(4) .section-num { background: var(--brand-purple); }
+
+  .section-title {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+
+  .section-sub {
+    font-size: 0.82rem;
+    color: var(--text-medium);
+  }
+
+  /* ===== FIELD ===== */
+  .field { margin-bottom: 18px; }
+
+  .field-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 900;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .required, .optional {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 900;
+  }
+
+  .required { background: var(--brand-pink); color: var(--white); }
+  .optional { background: var(--bg-lavender); color: var(--brand-purple-dark); }
+
+  .field-hint {
+    font-size: 0.78rem;
+    color: var(--text-medium);
+    margin-top: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2.5px solid var(--text-dark);
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background: var(--bg-cream);
+    color: var(--text-dark);
+    transition: all 0.15s;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    background: var(--white);
+    box-shadow: 3px 3px 0px var(--brand-purple);
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.7;
+  }
+
+  .input-error {
+    border-color: var(--error) !important;
+    background: #FCEBEB !important;
+  }
+
+  .error-msg {
+    color: var(--error);
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 6px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  .field-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 460px) {
+    .field-2col { grid-template-columns: 1fr; }
+  }
+
+  /* ===== RADIO / CHECKBOX ===== */
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .radio-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 2.5px solid var(--text-dark);
+    border-radius: 12px;
+    background: var(--bg-cream);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .radio-box:hover { background: var(--bg-lavender); }
+
+  .radio-box input {
+    margin-top: 3px;
+    accent-color: var(--brand-purple);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .radio-box-text {
+    flex: 1;
+    font-size: 0.92rem;
+  }
+
+  .radio-box-text strong {
+    display: block;
+    font-weight: 900;
+    margin-bottom: 2px;
+  }
+
+  .radio-box-text small {
+    color: var(--text-medium);
+    font-size: 0.78rem;
+  }
+
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 8px;
+  }
+
+  .checkbox-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border: 2.5px solid var(--text-dark);
+    border-radius: 999px;
+    background: var(--bg-cream);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.15s;
+  }
+
+  .checkbox-pill:has(input:checked) {
+    background: var(--brand-purple);
+    color: var(--white);
+  }
+
+  .checkbox-pill input {
+    accent-color: var(--brand-yellow);
+    flex-shrink: 0;
+  }
+
+  /* ===== URL LIST ===== */
+  .url-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .url-input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .url-input-row input { flex: 1; }
+
+  .url-remove-btn {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border: 2.5px solid var(--text-dark);
+    background: var(--white);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--error);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .url-remove-btn:hover {
+    background: var(--error);
+    color: var(--white);
+  }
+
+  .url-add-btn {
+    align-self: flex-start;
+    background: var(--bg-lavender);
+    color: var(--brand-purple-dark);
+    border: 2.5px solid var(--text-dark);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.15s;
+  }
+
+  .url-add-btn:hover {
+    background: var(--brand-purple);
+    color: var(--white);
+  }
+
+  /* ===== AGREEMENT ===== */
+  .agreement-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px 16px;
+    background: var(--bg-lavender);
+    border: 2.5px solid var(--text-dark);
+    border-radius: 12px;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+
+  .agreement-box input {
+    margin-top: 3px;
+    accent-color: var(--brand-purple);
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .agreement-box span {
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  /* ===== PRIVACY NOTICE ===== */
+  .privacy-notice {
+    background: #FFF4E6;
+    border: 2.5px solid var(--text-dark);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin: 24px 0 16px;
+    box-shadow: 4px 4px 0px var(--text-dark);
+  }
+
+  .privacy-notice-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .privacy-notice-icon {
+    font-size: 1.2rem;
+  }
+
+  .privacy-notice-title {
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+  }
+
+  .privacy-notice-intro {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    margin-bottom: 10px;
+    line-height: 1.7;
+  }
+
+  .privacy-notice-list {
+    list-style: none;
+    margin-bottom: 12px;
+  }
+
+  .privacy-notice-list li {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    padding: 4px 0 4px 22px;
+    position: relative;
+    line-height: 1.6;
+    font-weight: 700;
+  }
+
+  .privacy-notice-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 4px;
+    color: var(--brand-purple);
+    font-weight: 900;
+  }
+
+  .privacy-notice-footer {
+    font-size: 0.78rem;
+    color: var(--text-medium);
+    line-height: 1.7;
+    padding-top: 10px;
+    border-top: 2px dashed var(--bg-lavender);
+  }
+
+  .privacy-notice-footer strong {
+    color: var(--brand-purple-dark);
+  }
+
+  /* ===== SUBMIT BUTTON ===== */
+  .submit-btn {
+    display: block;
+    width: 100%;
+    background: var(--brand-purple);
+    color: var(--white);
+    border: var(--border-dark);
+    border-radius: 16px;
+    padding: 18px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 24px;
+    box-shadow: var(--shadow-brand);
+    transition: all 0.15s;
+  }
+
+  .submit-btn:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px var(--text-dark);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* ===== SUCCESS ===== */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .success-screen.show { display: block; }
+
+  .success-mascot {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 20px;
+    animation: celebrate 1s ease-out;
+  }
+
+  @keyframes celebrate {
+    0% { transform: scale(0) rotate(-180deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  .success-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--brand-purple-dark);
+  }
+
+  .success-text {
+    color: var(--text-medium);
+    line-height: 1.9;
+    margin-bottom: 24px;
+  }
+
+  .success-next {
+    background: var(--bg-lavender);
+    border: 2.5px solid var(--text-dark);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .success-next-title {
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .success-next ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+  }
+
+  .success-next li {
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .success-next li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success);
+    font-weight: 900;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 0.85rem;
+    color: var(--text-medium);
+  }
+
+  .footer strong { color: var(--brand-purple-dark); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="hero">
+    <a href="https://tikseek-inc.github.io/socialrocket-lp/" class="home-back">🏠 ホームに戻る</a>
+
+    <div class="hero-logo">
+      <svg width="36" height="36" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 40 8 Q 32 4 28 10 Q 34 14 40 14 Q 46 14 52 10 Q 48 4 40 8 Z" fill="#6BCF7F" stroke="#2B1B5C" stroke-width="2"/>
+        <circle cx="40" cy="44" r="26" fill="#5B3FF5" stroke="#2B1B5C" stroke-width="2.5"/>
+        <circle cx="33" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+        <circle cx="47" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+        <circle cx="34" cy="43" r="2.2" fill="#2B1B5C"/>
+        <circle cx="48" cy="43" r="2.2" fill="#2B1B5C"/>
+        <path d="M 36 52 Q 40 56 44 52" stroke="#2B1B5C" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      SocialRocket
+    </div>
+
+    <svg class="hero-mascot" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 40 8 Q 32 4 28 10 Q 34 14 40 14 Q 46 14 52 10 Q 48 4 40 8 Z" fill="#6BCF7F" stroke="#2B1B5C" stroke-width="2"/>
+      <circle cx="40" cy="44" r="26" fill="#5B3FF5" stroke="#2B1B5C" stroke-width="2.5"/>
+      <circle cx="30" cy="38" r="5" fill="#7A5FF7" opacity="0.6"/>
+      <circle cx="48" cy="36" r="4" fill="#7A5FF7" opacity="0.6"/>
+      <circle cx="33" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+      <circle cx="47" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+      <circle cx="34" cy="43" r="2.2" fill="#2B1B5C"/>
+      <circle cx="48" cy="43" r="2.2" fill="#2B1B5C"/>
+      <circle cx="26" cy="50" r="2.5" fill="#FF6B9D" opacity="0.7"/>
+      <circle cx="54" cy="50" r="2.5" fill="#FF6B9D" opacity="0.7"/>
+      <path d="M 36 52 Q 40 56 44 52" stroke="#2B1B5C" stroke-width="2" fill="none" stroke-linecap="round"/>
+    </svg>
+
+    <h1>🤝 MCN提携<br>エントリーフォーム</h1>
+    <p class="hero-desc">
+      SocialRocket MCNへの参加をご希望の方は、以下のフォームからエントリーしてください。<br>
+      書類審査の後、運営チームより面談のご案内を差し上げます✨
+    </p>
+
+    <div class="step-row">
+      <span class="step-badge"><span class="step-num">1</span>エントリー</span>
+      <span class="step-arrow">→</span>
+      <span class="step-badge"><span class="step-num">2</span>面談・審査</span>
+      <span class="step-arrow">→</span>
+      <span class="step-badge"><span class="step-num">3</span>契約締結</span>
+      <span class="step-arrow">→</span>
+      <span class="step-badge"><span class="step-num">4</span>MCN加入完了</span>
+    </div>
+  </section>
+
+  <form class="form-card" id="entryForm" novalidate>
+
+    <!-- Section 1: 基本情報 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">1</span>
+        <div>
+          <div class="section-title">基本情報</div>
+          <div class="section-sub">ご連絡先を教えてください</div>
+        </div>
+      </div>
+
+      <div class="field-2col">
+        <div class="field">
+          <label class="field-label" for="lastName">姓<span class="required">必須</span></label>
+          <input type="text" id="lastName" name="lastName" required placeholder="山田">
+          <div class="error-msg" data-for="lastName">入力してください</div>
+        </div>
+        <div class="field">
+          <label class="field-label" for="firstName">名<span class="required">必須</span></label>
+          <input type="text" id="firstName" name="firstName" required placeholder="太郎">
+          <div class="error-msg" data-for="firstName">入力してください</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="email">メールアドレス<span class="required">必須</span></label>
+        <input type="email" id="email" name="email" required placeholder="your@email.com">
+        <div class="error-msg" data-for="email">正しいメールアドレスを入力してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="phone">電話番号<span class="required">必須</span></label>
+        <input type="tel" id="phone" name="phone" required placeholder="090-1234-5678">
+        <div class="error-msg" data-for="phone">電話番号を入力してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="age">年齢<span class="required">必須</span></label>
+        <select id="age" name="age" required>
+          <option value="">選択してください</option>
+          <option value="under-18">18歳未満</option>
+          <option value="18-24">18〜24歳</option>
+          <option value="25-29">25〜29歳</option>
+          <option value="30-34">30〜34歳</option>
+          <option value="35-39">35〜39歳</option>
+          <option value="40-49">40〜49歳</option>
+          <option value="over-50">50歳以上</option>
+        </select>
+        <div class="error-msg" data-for="age">選択してください</div>
+        <div class="field-hint">※18歳未満の方は、保護者の同意が必要となります</div>
+      </div>
+    </div>
+
+    <!-- Section 2: SNS実績 -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">2</span>
+        <div>
+          <div class="section-title">SNS・TikTok Shop実績</div>
+          <div class="section-sub">あなたのSNS活動状況を教えてください</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="tiktokId">TikTok ID<span class="required">必須</span></label>
+        <input type="text" id="tiktokId" name="tiktokId" required placeholder="@your_tiktok_id">
+        <div class="error-msg" data-for="tiktokId">TikTok IDを入力してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="tiktokFollowers">TikTokフォロワー数<span class="required">必須</span></label>
+        <select id="tiktokFollowers" name="tiktokFollowers" required>
+          <option value="">選択してください</option>
+          <option value="under-1k">1,000人未満</option>
+          <option value="1k-5k">1,000〜5,000人</option>
+          <option value="5k-10k">5,000〜1万人</option>
+          <option value="10k-50k">1万〜5万人</option>
+          <option value="50k-100k">5万〜10万人</option>
+          <option value="100k-500k">10万〜50万人</option>
+          <option value="over-500k">50万人以上</option>
+        </select>
+        <div class="error-msg" data-for="tiktokFollowers">選択してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="tiktokShopStatus">TikTok Shop取引状況<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label class="radio-box">
+            <input type="radio" name="tiktokShopStatus" value="active" required>
+            <span class="radio-box-text">
+              <strong>🚀 TikTok Shopクリエイターとして活動中</strong>
+              <small>既に商品紹介・販売実績あり</small>
+            </span>
+          </label>
+          <label class="radio-box">
+            <input type="radio" name="tiktokShopStatus" value="registered">
+            <span class="radio-box-text">
+              <strong>📝 TikTok Shopクリエイター登録済み(実績なし)</strong>
+              <small>登録は完了しているが、まだ本格活動していない</small>
+            </span>
+          </label>
+          <label class="radio-box">
+            <input type="radio" name="tiktokShopStatus" value="planning">
+            <span class="radio-box-text">
+              <strong>💡 未登録だが、これから始めたい</strong>
+              <small>登録方法も含めてサポート希望</small>
+            </span>
+          </label>
+        </div>
+        <div class="error-msg" data-for="tiktokShopStatus">選択してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="tiktokShopGmv">TikTok Shop月間GMV(売上)<span class="optional">任意</span></label>
+        <select id="tiktokShopGmv" name="tiktokShopGmv">
+          <option value="">選択してください</option>
+          <option value="none">実績なし</option>
+          <option value="under-100k">10万円未満</option>
+          <option value="100k-500k">10〜50万円</option>
+          <option value="500k-1m">50〜100万円</option>
+          <option value="1m-5m">100〜500万円</option>
+          <option value="over-5m">500万円以上</option>
+        </select>
+        <div class="field-hint">実績があれば、より適切な案件をご提案できます</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="otherSns">他SNSアカウント<span class="optional">任意</span></label>
+        <textarea id="otherSns" name="otherSns" placeholder="Instagram: @xxx (フォロワー数)&#10;YouTube: チャンネル名 (登録者数)&#10;X: @xxx (フォロワー数)"></textarea>
+        <div class="field-hint">運営しているSNSがあれば、アカウント名とフォロワー数を教えてください</div>
+      </div>
+    </div>
+
+    <!-- Section 3: 発信ジャンル・コンテンツ -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">3</span>
+        <div>
+          <div class="section-title">発信ジャンル・過去事例</div>
+          <div class="section-sub">どんなコンテンツを発信していますか?</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">メイン発信ジャンル<span class="required">必須</span>
+          <small style="font-weight:400;font-size:0.75rem;color:var(--text-medium);margin-left:6px;">(複数選択可)</small>
+        </label>
+        <div class="checkbox-grid">
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="美容・コスメ">💄 美容・コスメ</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="ヘアケア・スキンケア">✨ ヘアケア・スキンケア</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="ファッション">👗 ファッション</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="食品・グルメ">🍽️ 食品・グルメ</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="生活雑貨">🏠 生活雑貨</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="家電・ガジェット">📱 家電・ガジェット</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="健康・フィットネス">💪 健康・フィットネス</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="ホーム・キッチン">🍳 ホーム・キッチン</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="エンタメ">🎬 エンタメ</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="教育・情報">📚 教育・情報</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="ライフスタイル">🌸 ライフスタイル</label>
+          <label class="checkbox-pill"><input type="checkbox" name="genres" value="その他">✨ その他</label>
+        </div>
+        <div class="error-msg" data-for="genres">1つ以上選択してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="contentUrls">代表的なコンテンツURL<span class="optional">任意</span></label>
+        <div id="urlList" class="url-list">
+          <div class="url-input-row">
+            <input type="url" name="contentUrl" placeholder="https://vt.tiktok.com/...">
+          </div>
+        </div>
+        <button type="button" class="url-add-btn" id="addUrlBtn">+ URLを追加</button>
+        <div class="field-hint">あなたを代表する動画のURLを最大5つまで(TikTok / YouTube / Instagram等)</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="pastPrExperience">過去のPR・コラボ経験<span class="optional">任意</span></label>
+        <textarea id="pastPrExperience" name="pastPrExperience" placeholder="例: ○○ブランドの美容液PRを担当、△△の新商品レビュー動画が100万再生達成など"></textarea>
+        <div class="field-hint">ブランド案件やコラボ実績があれば教えてください</div>
+      </div>
+    </div>
+
+    <!-- Section 4: 自己PR・意気込み -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-num">4</span>
+        <div>
+          <div class="section-title">自己PR・意気込み</div>
+          <div class="section-sub">あなたの魅力と熱量を教えてください🔥</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="selfPr">自己PR・強み<span class="required">必須</span></label>
+        <textarea id="selfPr" name="selfPr" required placeholder="あなたのコンテンツの特徴、発信スタイル、他のクリエイターとの違いなど、自由にアピールしてください" style="min-height: 120px;"></textarea>
+        <div class="error-msg" data-for="selfPr">自己PRを入力してください</div>
+        <div class="field-hint">100文字以上を推奨 / 書類審査の重要項目です</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="motivation">SocialRocketで実現したいこと<span class="required">必須</span></label>
+        <textarea id="motivation" name="motivation" required placeholder="SocialRocketのどんな点に魅力を感じたか、参加して実現したいこと、目標などを教えてください" style="min-height: 100px;"></textarea>
+        <div class="error-msg" data-for="motivation">意気込みを入力してください</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="referral">SocialRocketを知ったきっかけ<span class="optional">任意</span></label>
+        <select id="referral" name="referral">
+          <option value="">選択してください</option>
+          <option value="sns">SNS(TikTok / X / Instagram等)</option>
+          <option value="introduction">知人・他クリエイターからの紹介</option>
+          <option value="search">Web検索</option>
+          <option value="brand">提携ブランドから</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 個人情報取り扱いについて -->
+    <div class="privacy-notice">
+      <div class="privacy-notice-header">
+        <span class="privacy-notice-icon">📌</span>
+        <span class="privacy-notice-title">個人情報の取り扱いについて</span>
+      </div>
+      <p class="privacy-notice-intro">ご提供いただく個人情報は、以下の目的で利用いたします。</p>
+      <ul class="privacy-notice-list">
+        <li>書類審査・面談の実施</li>
+        <li>MCN提携に関するご連絡</li>
+        <li>提携ブランドへのご紹介(契約後のみ)</li>
+        <li>SocialRocketサービスの案内・運営</li>
+      </ul>
+      <p class="privacy-notice-footer">
+        取得した情報は、適切に管理し、上記目的以外には使用いたしません。<br>
+        ご本人の同意なく第三者へ提供することはありません。<br>
+        お問い合わせ: <strong>info@tikseek.co</strong> / 株式会社TikSeek
+      </p>
+    </div>
+
+    <!-- 同意 -->
+    <label class="agreement-box">
+      <input type="checkbox" id="agreement" required>
+      <span>
+        上記の<strong>個人情報の取り扱い</strong>について同意します
+        <span class="required" style="margin-left:6px;">必須</span>
+      </span>
+    </label>
+    <div class="error-msg" data-for="agreement">同意が必要です</div>
+
+    <button type="submit" class="submit-btn" id="submitBtn">
+      🚀 エントリーを送信する
+    </button>
+
+  </form>
+
+  <!-- Success Screen -->
+  <div class="form-card success-screen" id="successScreen">
+    <svg class="success-mascot" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 40 8 Q 32 4 28 10 Q 34 14 40 14 Q 46 14 52 10 Q 48 4 40 8 Z" fill="#6BCF7F" stroke="#2B1B5C" stroke-width="2"/>
+      <circle cx="40" cy="44" r="26" fill="#5B3FF5" stroke="#2B1B5C" stroke-width="2.5"/>
+      <circle cx="33" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+      <circle cx="47" cy="42" r="5" fill="white" stroke="#2B1B5C" stroke-width="1.5"/>
+      <path d="M 31 41 L 35 45 M 35 41 L 31 45" stroke="#2B1B5C" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 45 41 L 49 45 M 49 41 L 45 45" stroke="#2B1B5C" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 32 52 Q 40 60 48 52" stroke="#2B1B5C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <h2 class="success-title">🎉 エントリー完了!</h2>
+    <p class="success-text">
+      ご応募ありがとうございます!<br>
+      書類審査の後、運営チームより<strong>3〜5営業日以内</strong>にご連絡差し上げます。
+    </p>
+    <div class="success-next">
+      <div class="success-next-title">📋 今後の流れ</div>
+      <ul>
+        <li>エントリー内容の受付・確認</li>
+        <li>運営チームによる書類審査</li>
+        <li>面談のご案内(オンライン30分程度)</li>
+        <li>条件にご納得いただけたらMCN提携契約</li>
+        <li>STAGE 2: 限定商品応募が可能に!</li>
+      </ul>
+    </div>
+    <p style="font-size:0.85rem;color:var(--text-medium);">
+      ご入力いただいたメールアドレスに確認メールをお送りしていますので、ご確認ください。<br>
+      ご不明点は <strong>info@tikseek.co</strong> までお問い合わせください。
+    </p>
+  </div>
+
+  <div class="footer">
+    お問い合わせ: <strong>info@tikseek.co</strong><br>
+    運営: 株式会社TikSeek
+  </div>
+
+</div>
+
+<script>
+  const GAS_URL = 'YOUR_ENTRY_APPS_SCRIPT_URL_HERE';
+
+  const form = document.getElementById('entryForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successScreen = document.getElementById('successScreen');
+
+  // URL 追加ボタン
+  document.getElementById('addUrlBtn').addEventListener('click', () => {
+    const list = document.getElementById('urlList');
+    if (list.children.length >= 5) {
+      alert('URLは最大5つまで追加できます');
+      return;
+    }
+    const row = document.createElement('div');
+    row.className = 'url-input-row';
+    row.innerHTML = `
+      <input type="url" name="contentUrl" placeholder="https://vt.tiktok.com/...">
+      <button type="button" class="url-remove-btn">×</button>
+    `;
+    row.querySelector('.url-remove-btn').addEventListener('click', () => row.remove());
+    list.appendChild(row);
+  });
+
+  // エラー表示ヘルパー
+  function showError(fieldName, show) {
+    const errMsg = document.querySelector(`[data-for="${fieldName}"]`);
+    const input = document.querySelector(`[name="${fieldName}"], #${fieldName}`);
+    if (errMsg) errMsg.classList.toggle('show', show);
+    if (input && input.classList) input.classList.toggle('input-error', show);
+  }
+
+  // バリデーション
+  function validate() {
+    let isValid = true;
+    const requiredFields = ['lastName', 'firstName', 'email', 'phone', 'age', 'tiktokId', 'tiktokFollowers', 'selfPr', 'motivation'];
+
+    requiredFields.forEach(name => {
+      const el = document.querySelector(`[name="${name}"], #${name}`);
+      if (!el || !el.value.trim()) {
+        showError(name, true);
+        isValid = false;
+      } else {
+        showError(name, false);
+      }
+    });
+
+    // メール
+    const email = document.getElementById('email');
+    if (email.value && !email.value.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
+      showError('email', true);
+      isValid = false;
+    }
+
+    // ラジオボタン
+    const shopStatus = document.querySelector('[name="tiktokShopStatus"]:checked');
+    if (!shopStatus) { showError('tiktokShopStatus', true); isValid = false; }
+    else showError('tiktokShopStatus', false);
+
+    // チェックボックス(ジャンル)
+    const genres = document.querySelectorAll('[name="genres"]:checked');
+    if (genres.length === 0) { showError('genres', true); isValid = false; }
+    else showError('genres', false);
+
+    // 同意
+    const agreement = document.getElementById('agreement');
+    if (!agreement.checked) { showError('agreement', true); isValid = false; }
+    else showError('agreement', false);
+
+    if (!isValid) {
+      const firstErr = document.querySelector('.error-msg.show, input.input-error');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    return isValid;
+  }
+
+  // 送信
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = '送信中...';
+
+    const data = {
+      lastName: document.getElementById('lastName').value.trim(),
+      firstName: document.getElementById('firstName').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      age: document.getElementById('age').value,
+      tiktokId: document.getElementById('tiktokId').value.trim(),
+      tiktokFollowers: document.getElementById('tiktokFollowers').value,
+      tiktokShopStatus: document.querySelector('[name="tiktokShopStatus"]:checked')?.value || '',
+      tiktokShopGmv: document.getElementById('tiktokShopGmv').value,
+      otherSns: document.getElementById('otherSns').value.trim(),
+      genres: Array.from(document.querySelectorAll('[name="genres"]:checked')).map(c => c.value),
+      contentUrls: Array.from(document.querySelectorAll('[name="contentUrl"]')).map(i => i.value.trim()).filter(Boolean),
+      pastPrExperience: document.getElementById('pastPrExperience').value.trim(),
+      selfPr: document.getElementById('selfPr').value.trim(),
+      motivation: document.getElementById('motivation').value.trim(),
+      referral: document.getElementById('referral').value
+    };
+
+    try {
+      if (GAS_URL.includes('YOUR_ENTRY_APPS_SCRIPT_URL')) {
+        console.log('デモモード:', data);
+        alert('デモモードです。Apps Script URLを設定してください。');
+        submitBtn.disabled = false;
+        submitBtn.textContent = '🚀 エントリーを送信する';
+        return;
+      }
+
+      await fetch(GAS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      form.style.display = 'none';
+      successScreen.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } catch (err) {
+      console.error(err);
+      alert('送信に失敗しました。もう一度お試しください。');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '🚀 エントリーを送信する';
+    }
+  });
+</script>
+
+</body>
+</html>
